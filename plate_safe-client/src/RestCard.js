@@ -6,7 +6,7 @@ function RestCard({ restaurant }) {
       <div className="restaurant_title"><strong>{restaurant.name}</strong></div>
 
       {restaurant.dishes.map((dish) => {
-        return <div>{dish.name}</div>;
+        return <div key={dish.id}>{dish.name}</div>;
       })}
     </div>
   );

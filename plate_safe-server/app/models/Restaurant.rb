@@ -20,4 +20,9 @@ class Restaurant < ActiveRecord::Base
     Restaurant.all.map { |r| r unless r.allergens.include?(allergen) }
   end
 
+  def add_or_change_address address
+    
+    self.update(location: address)
+    
+  end
 end

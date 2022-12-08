@@ -21,7 +21,7 @@ return(
     <button onClick={()=>handleClick()}>Delete Restaurant</button>
     {restaurantData.map((restaurant)=>{
         return (
-            <RestCard restaurant={restaurant}/>
+            <RestCard key={restaurant.id} restaurant={restaurant}/>
         )
     })}
     
