@@ -21,8 +21,12 @@ class Restaurant < ActiveRecord::Base
   end
 
   def add_or_change_address address
-    
+    # calculated_latitude = ...
+    # calculated_latitude = ...
     self.update(location: address)
-    
+    self.update(latitude: calculated_latitude)
+    self.update(longitude: calculated_latitude)
+
+
   end
 end

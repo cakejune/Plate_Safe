@@ -1,5 +1,9 @@
 import React from 'react';
+import RestaurantModal from './RestaurantModal';
 
-function About() {}
+function About() {
+return <RestaurantModal/>
+
+}
 
 export default About

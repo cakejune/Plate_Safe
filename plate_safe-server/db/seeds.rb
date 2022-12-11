@@ -16,16 +16,28 @@ list_of_allergens = [
   "Sesame",
 ]
 
+restaurant_banner_images = [
+  "https://cdn.discordapp.com/attachments/1004488296493228134/1050880553441841162/CakeJune_web_banner_for_a_vegan_restaurant_fe0cfd2a-98c6-4d03-bc28-b9b7dff2cac2.png",
+    "https://cdn.discordapp.com/attachments/1004488296493228134/1050881469834338454/CakeJune_web_banner_for_an_indian_restaurant_c0962450-2614-4642-93a1-9ebc2d3bc901.png",
+    "https://cdn.discordapp.com/attachments/1004488296493228134/1050881626827137115/CakeJune_web_banner_for_an_indian_restaurant_0ab66153-ab07-47c5-a249-77018f94cd12.png",
+    "https://cdn.discordapp.com/attachments/1004488296493228134/1050881409394417714/CakeJune_web_banner_for_a_coding-themed_restaurant_9929afc9-c0ea-463b-a1ba-89aeac1953cb.png",
+    "https://cdn.discordapp.com/attachments/1004488296493228134/1050881378272677949/CakeJune_web_banner_for_a_sci-fi_restaurant_e4afa78e-cb9c-4591-8fda-59fe523ccec3.png",
+    "https://cdn.discordapp.com/attachments/1004488296493228134/1050889596134768740/CakeJune_web_banner_for_a_sci-fi_restaurant_53128572-2dc4-4245-9c53-ee5244337246.png"
+  ]
+
+
 puts "🌱 Seeding spices..."
 
 list_of_allergens.each { |a| Allergen.create(name: a) }
-
+x=0
 5.times do
   new_restaurant =
     Restaurant.create(
       name: Faker::Restaurant.unique.name,
       location: Faker::Address.unique.full_address,
+      image: restaurant_banner_images[x]
     )
+    x+=1
   5.times do
     has_allergen = [true, false].sample
     is_avoidable = [true, false].sample
@@ -43,6 +55,8 @@ list_of_allergens.each { |a| Allergen.create(name: a) }
     end
   end
 end
+
+
 
 puts "😛 Done! 👉👌"
 

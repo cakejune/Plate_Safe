@@ -12,30 +12,17 @@ code {
     monospace;
 }
 
+
 .containerContainer {
   display: flex;
   flex-direction: row;
-  height: 50%;
 }
 
-.photoAlbumContainer {
-  display: flex;
-  flex-direction: row;
-}
-.photoAlbumContainer2 {
-  display: flex;
-  flex-direction: row;
-}
-/* .react-photo-album--row {
-  display: inline-block;
-  height: 100%;
-} */
 /* .row-separater{
   height: 1vw
 } */
 .react-photo-album--row img {
-  width: 100%;
-  height: 100%;
+ 
   overflow: scroll;
   white-space: nowrap;
   animation: scroll-left-first infinite 20s linear;

@@ -22,6 +22,12 @@ class ApplicationController < Sinatra::Base
     dish.to_json
   end
 
+  get '/restaurants/:id' do
+    rest = Restaurant.find(params[:id])
+    rest.to_json
+  end
+  
+
   post '/restaurants/:id' do
     this_rest = Restaurant.find(params[:id])
     new_dish = Dish.create(
@@ -35,7 +41,9 @@ class ApplicationController < Sinatra::Base
 
   patch '/restaurants/:id' do
     restaurant = Restaurant.find(params[:id])
+    
     restaurant.update(location: params[:location])
+    #location: address
     restaurant.to_json
   end
 end
