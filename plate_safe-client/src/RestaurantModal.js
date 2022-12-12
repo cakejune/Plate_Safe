@@ -42,12 +42,17 @@ export default function RestaurantModal({restaurant, deleteDish}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+function handleDeleteDish(dish){
+  deleteDish(dish.id);
+}
+
   const dishList = restaurant.dishes.map((dish) => {
     return (
-      <ul key={dish}>
+      <ul key={dish.id}>
         <li>
           {dish.name}
-          <button onClick={deleteDish}>Delete Dish</button>
+          <button onClick={()=>handleDeleteDish(dish)}>Delete Dish</button>
         </li>
         {dish.a_preps.length > 0 ? (
           dish.a_preps.map((a_prep) => {
@@ -78,10 +83,10 @@ export default function RestaurantModal({restaurant, deleteDish}) {
             <img src={restaurantImage} style={modalBannerStyle}/>
             {restaurant.name}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
             
             Dish List: {dishList}
-          </Typography>
+          {/* </Typography> */}
         </Box>
       </Modal>
     </>

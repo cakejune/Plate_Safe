@@ -12,12 +12,16 @@ import Geocode from "react-geocode";
 function App() {
   const location = useLocation();
   const [restaurantData, setRestaurantData] = useState([]);
+  const [callUseEffect, setCallUseEffect] = useState(false)
 
   useEffect(() => {
     fetch("http://localhost:9292/restaurants")
       .then((res) => res.json())
-      .then((data) => setRestaurantData(data));
-  }, []);
+      .then((data) => {
+        setRestaurantData(data)
+        console.log(data[0])
+      });
+  }, [callUseEffect]);
 
   function addDish(id, newDish) {
     fetch(`http://localhost:/9292/restaurants/${id}`, {
@@ -29,15 +33,13 @@ function App() {
       .then((data) => setRestaurantData([...restaurantData, data]));
   }
 
-  function deleteDish(id) {
-    fetch(`http://localhost:/9292/restaurants/dishes/${id}`, {
-      method: "DELETE",
-    });
-    const updatedRestaurantData = restaurantData.filter(
-      (restaurant) => restaurant.dishes.id != id
+  async function deleteDish(id) {
+    console.log(id)
+    const resp = await fetch(
+      `http://localhost:9292/dishes/${id}`, { method: 'DELETE' }
     );
-
-    setRestaurantData(updatedRestaurantData);
+    const data = await resp.json();
+    setCallUseEffect(!callUseEffect)
   }
 
   function handleStateUpdate(data) {
@@ -55,11 +57,11 @@ function App() {
     // console.log(id, newLocationObj)
     try {
       const response = await fetch(`http://localhost:9292/restaurants/${id}`, {
-        method: 'PATCH',
+        method: "PATCH",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newLocationObj)
+        body: JSON.stringify(newLocationObj),
       });
       const data = await response.json();
       handleStateUpdate(data);

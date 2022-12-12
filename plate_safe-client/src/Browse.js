@@ -31,7 +31,7 @@ function Browse({restaurantData, addDish, deleteDish, editRestaurantLocation, ge
         >
             
             {filteredRestaurants.map((restaurant) => {
-                return <RestCard key={restaurant.id} restaurant={restaurant} dishes={restaurant.dishes} addDish={addDish} deleteDish={deleteDish} editRestaurantLocation={editRestaurantLocation}/>
+                return <RestCard key={(restaurant.id)*4} restaurant={restaurant} dishes={restaurant.dishes} addDish={addDish} deleteDish={deleteDish} editRestaurantLocation={editRestaurantLocation}/>
             })}
             
         </Grid>

@@ -2,7 +2,11 @@ import React from 'react';
 import RestaurantModal from './RestaurantModal';
 
 function About() {
-return <RestaurantModal/>
+return (
+    <div>
+        Hello
+    </div>
+)
 
 }
 

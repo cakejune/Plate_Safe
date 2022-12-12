@@ -126,7 +126,7 @@ function Home({ restaurantData, deleteRestaurant }) {
   return (
     <>
       <div>Hello</div>
-      <div className="containerContainer">
+      <div className="containerContainer" style={{backgroundColor: 'black'}}>
        
           <PhotoAlbum
             className="image-slider"
