@@ -27,6 +27,7 @@ code {
   overflow: scroll;
   white-space: nowrap;
   animation: scroll-left-first infinite 20s linear;
+
 }
 
 @keyframes scroll-left-first {

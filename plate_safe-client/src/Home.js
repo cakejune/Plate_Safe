@@ -1,22 +1,21 @@
 import React from "react";
 import RestCard from "./RestCard";
 import PhotoAlbum from "react-photo-album";
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import { styled } from "@mui/material/styles";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Collapse from "@mui/material/Collapse";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import { red } from "@mui/material/colors";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 function Home({ restaurantData, deleteRestaurant }) {
   //here we have states. Restaurants is all the restaurants. deleteRestaurant is a
@@ -111,9 +110,9 @@ function Home({ restaurantData, deleteRestaurant }) {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
   })(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
+    transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
     }),
   }));
@@ -122,24 +121,20 @@ function Home({ restaurantData, deleteRestaurant }) {
     setExpanded(!expanded);
   };
 
-
   return (
     <>
-      <div className="containerContainer" style={{backgroundColor: 'black'}}>
-       
-          <PhotoAlbum
-            className="image-slider"
-            layout="rows"
-            photos={photosv1}
-          />
-        
-          <PhotoAlbum
-            className="image-slider"
-            layout="rows"
-            photos={photosv2}
-          />
+      <div
+        className="containerContainer"
+        style={{
+          backgroundColor: "black",
+          height: "40vw",
+          justifyContent: "space-around",
+        }}
+      >
+        <PhotoAlbum className="image-slider" layout="rows" photos={photosv1} />
+
+        <PhotoAlbum className="image-slider" layout="rows" photos={photosv2} />
       </div>
-      <div style={{backgroundColor: "#ccc", height: '100vw'}}>HI </div>
     </>
   );
 }
