@@ -12,14 +12,15 @@ import Geocode from "react-geocode";
 function App() {
   const location = useLocation();
   const [restaurantData, setRestaurantData] = useState([]);
-  const [callUseEffect, setCallUseEffect] = useState(false)
+  const [callUseEffect, setCallUseEffect] = useState(false);
+
+  
 
   useEffect(() => {
     fetch("http://localhost:9292/restaurants")
       .then((res) => res.json())
       .then((data) => {
-        setRestaurantData(data)
-        console.log(data[0])
+        setRestaurantData(data);
       });
   }, [callUseEffect]);
 
@@ -34,24 +35,24 @@ function App() {
   }
 
   async function deleteDish(id) {
-    console.log(id)
-    const resp = await fetch(
-      `http://localhost:9292/dishes/${id}`, { method: 'DELETE' }
-    );
+    console.log(id);
+    const resp = await fetch(`http://localhost:9292/dishes/${id}`, {
+      method: "DELETE",
+    });
     const data = await resp.json();
-    setCallUseEffect(!callUseEffect)
+    setCallUseEffect(!callUseEffect);
   }
 
-  function handleStateUpdate(data) {
-    const updatedRestData = restaurantData.map((restaurant) => {
-      if (data.id === restaurant.id) {
-        return data;
-      } else {
-        return restaurant;
-      }
-    });
-    setRestaurantData(updatedRestData);
-  }
+  // function handleStateUpdate(data) {
+  //   const updatedRestData = restaurantData.map((restaurant) => {
+  //     if (data.id === restaurant.id) {
+  //       return data;
+  //     } else {
+  //       return restaurant;
+  //     }
+  //   });
+  //   setRestaurantData(updatedRestData);
+  // }
 
   async function editRestaurantLocation(id, newLocationObj) {
     // console.log(id, newLocationObj)
@@ -64,7 +65,7 @@ function App() {
         body: JSON.stringify(newLocationObj),
       });
       const data = await response.json();
-      handleStateUpdate(data);
+      setCallUseEffect(!callUseEffect);
       // console.log(newLocationObj);
     } catch (error) {
       console.error(error);
@@ -79,18 +80,18 @@ function App() {
     Geocode.setRegion("us");
     Geocode.setLocationType("ROOFTOP");
     Geocode.enableDebug();
-    // restaurantData.map(rest => {
-    //   Geocode.fromAddress(rest.location).then(
-    //     (response) => {
-    //       const { lat, lng } = response.results[0].geometry.location;
-    //       console.log(lat, lng);
-    //       return coorArr.push([lat, lng])
-    //     },
-    //     (error) => {
-    //       return console.error(error);
-    //     }
-    //   )
-    // })
+    restaurantData.map(rest => {
+      Geocode.fromAddress(rest.location).then(
+        (response) => {
+          const { lat, lng } = response.results[0].geometry.location;
+          console.log(`${lat}, ${lng}`);
+          return coorArr.push([`${lat}, ${lng}`])
+        },
+        (error) => {
+          return console.error(error);
+        }
+      )
+    })
     console.log(coorArr);
     return coorArr;
   }
@@ -98,6 +99,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
+      <div>HI</div>
       <SlideRoutes location={location} duration={400}>
         <Route
           path="/"

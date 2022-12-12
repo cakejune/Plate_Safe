@@ -64,11 +64,14 @@ function RestCard({ restaurant, addDish, deleteDish, editRestaurantLocation }) {
 
   function submitUpdate(e) {
     e.preventDefault();
-    const newLocationObj = {
-      location: address
-    };
+
+    // passed this as an argument in editRestarauntLocation instead of setting a variable.
+    // const newLocationObj = {
+    //   location: address
+    // };
     // console.log(newLocationObj, restaurant.id);
     editRestaurantLocation(thisRestaurantId, {location: address});
+    setAddress(""); //resets the input field
   }
 
   function addDish(e) {
@@ -128,7 +131,7 @@ function RestCard({ restaurant, addDish, deleteDish, editRestaurantLocation }) {
               <MoreVertIcon />
             </IconButton>
           }
-          title={<RestaurantModal deleteDish={deleteDish} restaurant={restaurant} key={restaurant.id}/>}
+          title={<RestaurantModal deleteDish={deleteDish} restaurant={restaurant} key={restaurant.id}/>} //this is our modal import
         />
         <CardMedia
           component="img"

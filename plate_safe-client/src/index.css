@@ -16,6 +16,7 @@ code {
 .containerContainer {
   display: flex;
   flex-direction: row;
+  margin-top: 24px;
 }
 
 /* .row-separater{
