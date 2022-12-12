@@ -13,7 +13,7 @@ function Map({ restaurantData, getCoordinates }) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {markerLoc.map(coordinate => {
-              <Marker position={coordinate}>
+              <Marker key={coordinate} position={coordinate}>
                 <Popup>{restaurantData.name}</Popup>
               </Marker>
             })}
