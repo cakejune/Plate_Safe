@@ -16,6 +16,14 @@ list_of_allergens = [
   "Sesame",
 ]
 
+nyAddresses = [
+  "1586 1st Ave., New York, NY 10028",
+  "11 Broadway, New York, NY 10004",
+  "218 E 9th St, New York, NY 10003",
+  "91 1st Ave., New York, NY 10003",
+  "4 W 22nd St, New York, NY 10010",
+];
+
 restaurant_banner_images = [
   "https://cdn.discordapp.com/attachments/1004488296493228134/1050880553441841162/CakeJune_web_banner_for_a_vegan_restaurant_fe0cfd2a-98c6-4d03-bc28-b9b7dff2cac2.png",
     "https://cdn.discordapp.com/attachments/1004488296493228134/1050881469834338454/CakeJune_web_banner_for_an_indian_restaurant_c0962450-2614-4642-93a1-9ebc2d3bc901.png",
@@ -34,7 +42,7 @@ x=0
   new_restaurant =
     Restaurant.create(
       name: Faker::Restaurant.unique.name,
-      location: Faker::Address.unique.full_address,
+      location: nyAddresses[x],
       image: restaurant_banner_images[x]
     )
     x+=1
