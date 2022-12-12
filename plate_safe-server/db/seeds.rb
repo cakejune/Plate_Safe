@@ -24,6 +24,22 @@ nyAddresses = [
   "4 W 22nd St, New York, NY 10010",
 ];
 
+nyLats = [
+  40.774550,
+  40.705280,
+  40.729570,
+  40.726250,
+  40.740940
+]
+
+nyLongs = [
+  -73.950780,
+  -74.014259,
+  -73.988570,
+  -73.986610,
+  -73.990753
+]
+
 restaurant_banner_images = [
   "https://cdn.discordapp.com/attachments/1004488296493228134/1050880553441841162/CakeJune_web_banner_for_a_vegan_restaurant_fe0cfd2a-98c6-4d03-bc28-b9b7dff2cac2.png",
     "https://cdn.discordapp.com/attachments/1004488296493228134/1050881469834338454/CakeJune_web_banner_for_an_indian_restaurant_c0962450-2614-4642-93a1-9ebc2d3bc901.png",
@@ -43,7 +59,9 @@ x=0
     Restaurant.create(
       name: Faker::Restaurant.unique.name,
       location: nyAddresses[x],
-      image: restaurant_banner_images[x]
+      image: restaurant_banner_images[x],
+      latitude: nyLats[x],
+      longitude: nyLongs[x]
     )
     x+=1
   5.times do
@@ -56,7 +74,7 @@ x=0
       )
     if has_allergen
       new_dish.add_allergen_to_dish(
-        Allergen.find(rand(Allergen.first.id..Allergen.last.id)),
+        Allergen.find(rand(Allergen.first.id..Allergen.last.id)), 
         is_avoidable,
       )
       #when we add allergen to dish, it takes 2 arguments: an allergen, and whether it's avoidable.
